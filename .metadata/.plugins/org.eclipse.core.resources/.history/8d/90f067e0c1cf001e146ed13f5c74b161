@@ -1,0 +1,7 @@
+package com.app.controller;
+
+@RequestController
+@RequestMapping("/users/patients")
+public class UserController {
+
+}

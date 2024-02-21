@@ -1,0 +1,127 @@
+package com.app.services;
+
+
+import java.lang.annotation.Annotation;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.app.custom_exceptions.ApiException;
+import com.app.custom_exceptions.IdNotFoundException;
+import com.app.dao.EmployeeDao;
+import com.app.dto.EmployeeDTO;
+import com.app.entities.Employee;
+
+import io.swagger.v3.oas.annotations.extensions.Extension;
+import io.swagger.v3.oas.annotations.headers.Header;
+import io.swagger.v3.oas.annotations.links.Link;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+
+public class EmployeeServicesImpl implements EmployeeServices{
+
+	@Autowired
+	private EmployeeDao emp_dao;
+	
+	@Autowired
+	private ModelMapper mapper;
+	
+//	-------------- Add new Employee----------------------------
+	@Override
+	public EmployeeDTO addNewEmployee(EmployeeDTO dto){
+		if(dto.getPassword() == dto.getConformPassword())
+		{
+			Employee emp;
+			Employee emp_obj = mapper.map(dto, Employee.class);
+			return mapper.map(emp_dao.save(emp_obj), EmployeeDTO.class);
+		}
+		throw new ApiException("Password Not Match...!");
+	}
+
+	
+//	-------------- Get Employee By ID ----------------------------
+	@Override
+	public Employee getEmpById(Long id) {
+		Employee emp_by_id = emp_dao.findById(id).orElseThrow(()->new IdNotFoundException("Provided Id Not Found in Get By Id.....!"));
+		return emp_by_id;
+	}
+
+	
+//	-------------- Update Employee By Id ---------------------------
+	@Override
+	public Employee updateEmployeeById(Long Id, EmployeeDTO dto) {
+		
+		Employee e = emp_dao.findById(Id).orElseThrow(()-> new IdNotFoundException("Provided Id Not Found in Update Employee......!"));
+		Employee updatedEmployee = mapper.map(dto, Employee.class);
+		updatedEmployee.setId(dto.getEmp_id());
+		Employee savedEmploye = emp_dao.save(updatedEmployee);
+		return savedEmploye;
+	}
+	
+	
+//	-------------- Delete Employee By Id ---------------------------
+	@Override
+	public ApiResponse deleteEmployeeById(Long Id)
+	{
+		Employee e = emp_dao.findById(Id)
+				.orElseThrow(()-> new IdNotFoundException("Provided Id Not Found in Delete Employee.....!"));
+		emp_dao.delete(e);
+		return new ApiResponse() {
+			
+			@Override
+			public Class<? extends Annotation> annotationType() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+			
+			@Override
+			public boolean useReturnTypeSchema() {
+				// TODO Auto-generated method stub
+				return false;
+			}
+			
+			@Override
+			public String responseCode() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+			
+			@Override
+			public String ref() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+			
+			@Override
+			public Link[] links() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+			
+			@Override
+			public Header[] headers() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+			
+			@Override
+			public Extension[] extensions() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+			
+			@Override
+			public String description() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+			
+			@Override
+			public Content[] content() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+		};
+	}
+
+}

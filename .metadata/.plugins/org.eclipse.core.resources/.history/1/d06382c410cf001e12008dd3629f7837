@@ -1,0 +1,99 @@
+package com.app.entities;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.app.enums.RoleType;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+
+@Entity
+@Table(name = "employees")
+@NoArgsConstructor
+@Getter
+@Setter
+@ToString(exclude = { "users" }, callSuper = true)
+@PrimaryKeyJoinColumn(name = "user_id")
+public class Employee extends Users {
+	
+
+	@Column(name="user_id", length = 30)
+	private String user_id;
+	
+	
+	@Column(name="first_name", length = 30)
+	private String first_name;
+
+	@Column(name="last_name", length = 30)
+	private String last_name;
+	
+	@Column(name="contact", length = 30)
+	private String contact;
+	
+	@Column(name="email", length = 30) // =>unique
+	private String email;
+
+	@Column(name="password", nullable = false) // =>NOT NULL
+	private String password;
+	
+//	@Column(name="conform_password", nullable = false) // =>NOT NULL
+	private String conformPassword;
+	
+	@Column(name="gender", length = 30) // =>unique
+	private String gender;
+	
+	@Column(name="is_active")
+	private boolean is_active;
+	
+	@DateTimeFormat(pattern = "yyyy-mm-dd")
+	private LocalDate created_on;
+	
+	@Enumerated(EnumType.STRING) // col : varchar => enum constant name
+	@Column(name="role_id", length = 10)
+	private RoleType role_id;
+	@Column(name="designation", length = 50)
+	private String designation;
+
+	@Column(name="salary", length = 30)
+	private double salary;	
+
+	
+//	List<Employee> emp_list = new ArrayList<Employee>();
+	
+
+//	// Employee HAS-A skills (string)
+//	@ElementCollection // mandatory
+//	@CollectionTable(name = "emp_skills", joinColumns = @JoinColumn(name = "emp_id"))
+//	@Column(name = "skill_name", length = 20)
+//	private List<String> skills = new ArrayList<>();
+//	// one to many association between Employee 1--->* PaymentCard
+//	@ElementCollection
+//	@CollectionTable(name = "emp_payment_cards", 
+//	joinColumns = @JoinColumn(name = "emp_id"))
+//	private List<PaymentCard> cards = new ArrayList<>();
+	
+	
+	
+
+}

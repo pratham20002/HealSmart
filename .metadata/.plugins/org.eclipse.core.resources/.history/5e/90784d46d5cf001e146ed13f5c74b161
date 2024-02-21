@@ -1,0 +1,67 @@
+package com.app.services;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.app.custom_exceptions.*;
+
+import com.app.dao.UserDao;
+import com.app.dto.ApiResponse;
+import com.app.dto.PatientDTO;
+import com.app.entities.Users;
+
+@Service
+@Transactional
+public class PatientServicesImpl implements PatientServices{
+
+	@Autowired
+	private UserDao user_dao;
+	
+	@Autowired
+	private ModelMapper mapper;
+	
+	@Override
+	public PatientDTO addNewPatient(PatientDTO pdto) {
+		
+		System.out.println("----------------- inside addnew patient impl mmethods.....! "+pdto.toString());
+		if(pdto.getPassword().equals(pdto.getRetypePassword()))
+		{
+			Users user_obj = mapper.map(pdto, Users.class);
+			return mapper.map(user_dao.save(user_obj), PatientDTO.class);
+		}
+		
+		throw new ApiException("Password doesen't match.................!");
+	}
+
+	@Override
+	public List<Users> getAllPatient_List() {
+//		Pagination remaning page number, page size
+		List<Users> all_users_list = user_dao.findAll(); // check code here...!
+		return null;
+	}
+
+	@Override
+	public Users getPatientByID(Long Id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Users updatePatientById(Long Id, PatientDTO pdto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ApiResponse deletePatientById(Long Id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+	
+}

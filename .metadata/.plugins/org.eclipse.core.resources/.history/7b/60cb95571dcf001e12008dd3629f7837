@@ -1,0 +1,86 @@
+package com.app.dto;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+import javax.persistence.Enumerated;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.app.enums.RoleType;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@ToString
+public class 	 {
+	
+	@JsonProperty(access = Access.READ_ONLY) // used during serialization
+	private Long emp_id;
+	
+	
+	private String first_name;
+	
+	
+	private String last_name;
+	
+	
+	private String contact;
+	
+	
+	private String email;
+	
+	
+	@JsonProperty(access = Access.WRITE_ONLY)
+	private String password;
+	
+	
+	@JsonProperty(access = Access.WRITE_ONLY)
+	private String conformPassword;
+	
+	@DateTimeFormat(pattern = "yyyy-mm-dd")
+	private LocalDate created_on;
+	
+	
+	private String gender;
+	
+	private int is_active;
+	
+	
+	private RoleType roleType;
+	
+	
+	private String designation;
+	
+	
+	@DateTimeFormat(pattern = "yyyy-mm-dd")
+	private LocalDate date_of_birth;
+	
+	private double salary;
+	
+//	@Email
+//	private String email;
+//	@JsonProperty(access = Access.WRITE_ONLY) //required only in de-ser.
+//	private String password;
+//	@JsonProperty(access = Access.WRITE_ONLY)
+//	private String confirmPassword;
+
+	
+//	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss") //added new | can be replaced by @JsonFormat with the same pattern : tested that also
+//	private LocalDateTime inTime;
+//	private RoleType type;
+	
+	
+	
+//	@JsonProperty(access = Access.WRITE_ONLY) // used during de-serialization
+//	private Long deptId;
+}

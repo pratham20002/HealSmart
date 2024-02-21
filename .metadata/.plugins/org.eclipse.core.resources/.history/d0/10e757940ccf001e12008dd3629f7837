@@ -1,0 +1,19 @@
+package com.app.services;
+
+import java.util.List;
+
+import com.app.dto.EmployeeDTO;
+import com.app.entities.Employee;
+
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+
+public interface EmployeeServices {
+
+	EmployeeDTO addNewEmployee(EmployeeDTO dto);
+	
+	Employee getEmpById(Long id);
+	
+	Employee updateEmployeeById(Long Id, EmployeeDTO dto);
+	
+	ApiResponse deleteEmployeeById(Long Id);
+}

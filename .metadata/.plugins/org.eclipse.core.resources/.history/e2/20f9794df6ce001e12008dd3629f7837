@@ -1,0 +1,8 @@
+package com.app.services;
+
+import com.app.dto.EmployeeDTO;
+
+public interface EmployeeServices {
+
+	EmployeeDTO addNewEmployee(EmployeeDTO dto);
+}

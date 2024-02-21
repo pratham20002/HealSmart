@@ -1,0 +1,31 @@
+package com.app.entities;
+
+import java.time.LocalDate;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import org.aspectj.weaver.tools.Trace;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Entity
+@Table(name = "Patients")
+@NoArgsConstructor
+@Getter
+@Setter
+@ToString(callSuper = true)
+public class Patient extends BaseUser{
+
+	@Column(name="first_name", length = 30)
+	private String first_name;
+	
+	@DateTimeFormat(pattern = "yyyy-mm-dd")
+	private LocalDate created_at;
+	
+}

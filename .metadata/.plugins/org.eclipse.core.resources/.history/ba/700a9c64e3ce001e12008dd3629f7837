@@ -1,0 +1,31 @@
+package com.app.entities;
+
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Table;
+
+import com.app.enums.RoleType;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Entity
+@NoArgsConstructor
+@Table(name = "Roles")
+@Getter
+@Setter
+@ToString()
+
+public class role{
+	
+	@Enumerated(EnumType.STRING) // col : varchar => enum constant name
+	@Column(name="role_id", length = 10)
+	private RoleType role_id;
+	
+	
+	
+
+}

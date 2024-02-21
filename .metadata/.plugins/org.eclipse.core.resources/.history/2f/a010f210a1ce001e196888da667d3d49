@@ -1,0 +1,13 @@
+package com.app.entities;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import lombok.NoArgsConstructor;
+
+@Entity
+@NoArgsConstructor
+@Table(name = "Roles")
+public class role extends BaseEntity{
+
+}

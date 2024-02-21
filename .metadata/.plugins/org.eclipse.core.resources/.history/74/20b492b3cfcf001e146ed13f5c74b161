@@ -1,0 +1,14 @@
+package com.app.services;
+
+import com.app.dto.PatientDTO;
+import com.app.entities.Users;
+
+public interface PatientServices{
+
+	PatientDTO addNewPatient(PatientDTO pdto);
+
+	Users getPatientByID(Long Id);
+	
+	Users updatePatientById(Long Id, PatientDTO pdto)
+	
+}
