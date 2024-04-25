@@ -20,3 +20,15 @@ communicate effectively, the system aims to foster collaboration, efficiency, an
 levels of healthcare delivery. As we embark on the development of HealSmart, we envision a future where 
 hospitals operate more efficiently, healthcare professionals are empowered to deliver superior patient 
 care, and patients experience improved access to healthcare services.
+
+
+## ACKNOWLEDGEMENT
+I take this occasion to thank God, almighty for blessing us with his grace and taking our endeavor to a
+successful culmination. I extend my sincere and heartfelt thanks to our esteemed guide, Mrs. Sonali 
+Mogal for providing me with the right guidance and advice at the crucial juncture sand for showing me
+the right way. I extend my sincere thanks to our respected Centre Co-Ordinator Mr. Rohit Puranik, for
+allowing us to use the facilities available. I would like to thank the other faculty members also, at this
+occasion. Last but not the least, I would like to thank my friends and family for the support and
+encouragement they have given me during the course of our work.
+                                                                Chitransh Mrigank Singh (230941220048)
+                                                                Prathmesh Satpute (230941220129)
