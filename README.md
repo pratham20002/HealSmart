@@ -1,2 +1,2 @@
-# HealSmart
-Hospital Management System
+## HealSmart
+
